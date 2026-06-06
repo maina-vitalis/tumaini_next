@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -8,8 +7,6 @@ import {
   Calendar,
   CheckCircle,
   Clock,
-  Compass,
-  Droplets,
   Heart,
   MapPin,
   Mountain,
@@ -190,27 +187,18 @@ export default function PreparationPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <Badge className="bg-white/20 text-white border-white/30 text-lg px-4 py-2">
-                <Mountain className="w-5 h-5 mr-2" />
-                Preparation Guide
-              </Badge>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Prepare for Your
-              <span className="block text-primary-foreground/90">Epic Adventure</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-              Transform your hiking dreams into reality with our comprehensive
-              preparation guide. Every summit conquered starts with proper
-              preparation.
-            </p>
+      {/* Minimal Header */}
+      <div className="border-b">
+        <div className="max-w-7xl mx-auto px-4 py-10 text-center">
+          <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+            <Mountain className="h-5 w-5 text-primary" />
           </div>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Hike Preparation Guide
+          </h1>
+          <p className="mt-2 text-muted-foreground">
+            Simple steps to prepare for a safe and enjoyable adventure.
+          </p>
         </div>
       </div>
 
@@ -477,36 +465,6 @@ export default function PreparationPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="text-center">
-          <Card className="bg-primary text-primary-foreground border-0">
-            <CardContent className="p-12">
-              <Mountain className="w-16 h-16 mx-auto mb-6 opacity-80" />
-              <h2 className="text-3xl font-bold mb-4">
-                Ready to Conquer Your Next Adventure?
-              </h2>
-              <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                With proper preparation, every mountain becomes conquerable.
-                Your journey to the summit starts with the first step of
-                preparation.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Badge variant="secondary" className="text-lg px-6 py-3">
-                  <Compass className="w-5 h-5 mr-2" />
-                  Plan Your Route
-                </Badge>
-                <Badge variant="secondary" className="text-lg px-6 py-3">
-                  <Droplets className="w-5 h-5 mr-2" />
-                  Stay Hydrated
-                </Badge>
-                <Badge variant="secondary" className="text-lg px-6 py-3">
-                  <Shield className="w-5 h-5 mr-2" />
-                  Stay Safe
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
       </div>
     </div>
   );

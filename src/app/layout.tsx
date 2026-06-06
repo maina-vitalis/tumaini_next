@@ -15,6 +15,17 @@ import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+// Reusable JSON-LD component to avoid React script warnings during hydration
+function JsonLd({ data }: { data: Record<string, unknown> }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      suppressHydrationWarning
+    />
+  );
+}
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -67,13 +78,8 @@ export default function RootLayout({
           content="strict-origin-when-cross-origin"
         />
 
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
+        {/* Structured Data - JSON-LD (for SEO) */}
+        <JsonLd data={organizationSchema} />
 
         {/* Additional meta tags for better SEO */}
         <meta name="format-detection" content="telephone=no" />
