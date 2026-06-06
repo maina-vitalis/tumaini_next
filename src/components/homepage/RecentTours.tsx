@@ -16,11 +16,9 @@ const RecentTours = () => {
       const response = await axios.get("/api/tours/recentTours");
       return response.data;
     },
-    staleTime: 30 * 1000, // 30 seconds
-    refetchInterval: 60 * 1000, // Refetch every minute
-    refetchOnWindowFocus: true, // Refetch when user returns to tab
-    refetchOnMount: true, // Always refetch on component mount
-    retry: 3, // Retry failed requests
+    staleTime: 5 * 60 * 1000, // 5 minutes - tour availability doesn't change that fast
+    refetchOnWindowFocus: false,
+    retry: 2,
   });
 
   if (isLoading) {

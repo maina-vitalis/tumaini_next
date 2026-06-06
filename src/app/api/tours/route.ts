@@ -11,17 +11,33 @@ export async function GET(req: NextRequest) {
       orderBy: {
         createdAt: "desc",
       },
+      select: {
+        id: true,
+        tourName: true,
+        price: true,
+        booking: true,
+        images: true,
+        rating: true,
+        difficulty: true,
+        level: true,
+        hikeType: true,
+        location: true,
+        date: true,
+        summary: true,
+        createdAt: true,
+        updatedAt: true,
+        // Exclude large JSON fields (itinerary, inclusive, exclusive) for list views
+      },
     });
 
     const response = NextResponse.json(tours);
 
-    // Add cache control headers to ensure fresh data
+    // Public data can be cached at edge/browser for short time.
+    // s-maxage for CDN, stale-while-revalidate for fast subsequent loads.
     response.headers.set(
       "Cache-Control",
-      "no-cache, no-store, must-revalidate"
+      "public, max-age=30, s-maxage=60, stale-while-revalidate=300"
     );
-    response.headers.set("Pragma", "no-cache");
-    response.headers.set("Expires", "0");
 
     return response;
   } catch (error) {

@@ -8,9 +8,8 @@ import {
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// Force dynamic rendering and revalidate every 60 seconds
+// Revalidate tour details periodically (data doesn't change super frequently)
 export const revalidate = 60;
-export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ tourId: string }>;
@@ -23,6 +22,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const tour = await prisma.tour.findUnique({
       where: { id: tourId },
+      select: {
+        id: true,
+        tourName: true,
+        price: true,
+        booking: true,
+        images: true,
+        rating: true,
+        difficulty: true,
+        level: true,
+        hikeType: true,
+        location: true,
+        date: true,
+        description: true,
+        summary: true,
+        itinerary: true,
+        inclusive: true,
+        exclusive: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
 
     if (!tour) {
@@ -64,6 +83,26 @@ export default async function TourDetailsPage({ params }: Props) {
   try {
     const tour = await prisma.tour.findUnique({
       where: { id: tourId },
+      select: {
+        id: true,
+        tourName: true,
+        price: true,
+        booking: true,
+        images: true,
+        rating: true,
+        difficulty: true,
+        level: true,
+        hikeType: true,
+        location: true,
+        date: true,
+        description: true,
+        summary: true,
+        itinerary: true,
+        inclusive: true,
+        exclusive: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
 
     if (!tour) {

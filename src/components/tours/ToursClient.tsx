@@ -24,7 +24,7 @@ const ToursClient = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       {/* Hero Section */}
       <header className="relative bg-gradient-to-r from-primary/10 via-primary/5 to-background border-b">
         <div className="max-w-7xl mx-auto px-4 py-16 sm:py-24">

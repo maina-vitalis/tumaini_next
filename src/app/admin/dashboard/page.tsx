@@ -84,8 +84,12 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Verify admin
-        const adminResponse = await fetch("/api/admin/verify");
+        // Parallel fetches for faster load
+        const [adminResponse, toursResponse] = await Promise.all([
+          fetch("/api/admin/verify"),
+          fetch("/api/tours"),
+        ]);
+
         if (adminResponse.ok) {
           const adminData = await adminResponse.json();
           setAdmin(adminData.admin);
@@ -94,8 +98,6 @@ export default function AdminDashboard() {
           return;
         }
 
-        // Fetch tours
-        const toursResponse = await fetch("/api/tours");
         if (toursResponse.ok) {
           const toursData = await toursResponse.json();
           setTours(toursData);

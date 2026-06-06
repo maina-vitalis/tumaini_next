@@ -29,6 +29,7 @@ function TourCard({ tour }: Props) {
             src={imageUrl}
             alt={tour.tourName}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 300px"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           {/* Gradient Overlay */}

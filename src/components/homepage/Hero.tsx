@@ -169,6 +169,8 @@ const HeroImage = () => {
                     : "Mountain hiking adventure with Tumaini Fitness"
                 }
                 fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -284,6 +286,7 @@ const HeroImage = () => {
                 src="https://res.cloudinary.com/dl0w5seja/image/upload/v1730121729/image19_b80oyp.jpg"
                 alt="Hiking group adventure"
                 fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -295,6 +298,7 @@ const HeroImage = () => {
                 src="https://res.cloudinary.com/dl0w5seja/image/upload/v1735662600/selah/Ol%20Njorowa%20Gorges%20Hike%20%24%20Geothermal%20SPA-1735662600176.jpg"
                 alt="Geothermal"
                 fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

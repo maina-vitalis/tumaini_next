@@ -26,6 +26,10 @@ model Tour {
   exclusive   Json     @default("[]")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@index([date])
+  @@index([location])
+  @@index([createdAt])
 }
 
 model Admin {

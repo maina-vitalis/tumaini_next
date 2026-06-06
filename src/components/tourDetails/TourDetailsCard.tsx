@@ -116,7 +116,7 @@ const TourDetailsCard = ({ tour }: Props) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       {/* Hero Section with Image Gallery */}
       <div className="relative h-[60vh] md:h-[70vh] overflow-hidden rounded-xl">
         <div className="relative h-full">
@@ -126,6 +126,7 @@ const TourDetailsCard = ({ tour }: Props) => {
             fill
             className="object-cover transition-all duration-500"
             priority
+            sizes="100vw"
           />
 
           {/* Gradient Overlay */}
@@ -583,7 +584,7 @@ const TourDetailsCard = ({ tour }: Props) => {
                 <CardContent>
                   <div className="flex items-center gap-4">
                     <Avatar className="w-12 h-12">
-                      <AvatarImage src="./../../app/icon.png" />
+                      <AvatarImage src="/icon.png" />
                       <AvatarFallback>TF</AvatarFallback>
                     </Avatar>
                     <div>

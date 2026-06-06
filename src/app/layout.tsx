@@ -49,14 +49,9 @@ export default function RootLayout({
         {/* Favicon and app icons */}
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/icon.png" type="image/png" sizes="192x192" />
-        <link rel="apple-touch-icon" href="/icon.png" />
 
-        {/* Manifest for PWA */}
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Theme color */}
+        {/* Theme color (browser UI) */}
         <meta name="theme-color" content="#16a34a" />
-        <meta name="msapplication-TileColor" content="#16a34a" />
 
         {/* Viewport and compatibility */}
         <meta
@@ -82,16 +77,12 @@ export default function RootLayout({
 
         {/* Additional meta tags for better SEO */}
         <meta name="format-detection" content="telephone=no" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content={SEO_CONFIG.siteName} />
 
         {/* Verification tags (add your actual verification codes) */}
         {/* <meta name="google-site-verification" content="your-google-verification-code" /> */}
         {/* <meta name="msvalidate.01" content="your-bing-verification-code" /> */}
       </head>
-      <body className={cn(inter.className, "antialiased")}>
+      <body className={cn(inter.className, "antialiased flex min-h-dvh flex-col")}>
         <QueryProvider>
           <ThemeProvider
             attribute="class"
@@ -111,7 +102,7 @@ export default function RootLayout({
 
             <main
               id="main-content"
-              className="mx-auto w-full px-3 md:max-w-[95%] lg:max-w-[1200px] min-h-screen"
+              className="mx-auto w-full flex-1 px-3 md:max-w-[95%] lg:max-w-[1200px]"
               role="main"
             >
               {children}
@@ -125,19 +116,6 @@ export default function RootLayout({
         {/* Performance monitoring */}
         <SpeedInsights />
         <Analytics />
-
-        {/* Service Worker Registration */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js');
-                });
-              }
-            `,
-          }}
-        />
       </body>
     </html>
   );

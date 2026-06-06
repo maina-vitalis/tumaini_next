@@ -17,21 +17,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
-  async headers() {
-    return [
-      {
-        // Prevent caching for static JS chunks
-        source: "/_next/static/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-store",
-          },
-        ],
-      },
-    ];
-  },
 };
 
 export default nextConfig;

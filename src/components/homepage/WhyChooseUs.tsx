@@ -106,6 +106,7 @@ function WhyChooseUs() {
               src={chooseUs}
               alt="Tumaini Fitness adventure experience"
               fill
+              sizes="(max-width: 1200px) 95vw, 1200px"
               className="object-cover"
             />
 

@@ -12,7 +12,7 @@ interface TourDetailsClientProps {
 
 export default function TourDetailsClient({ tour }: TourDetailsClientProps) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       {/* Navigation Header */}
       <div className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">

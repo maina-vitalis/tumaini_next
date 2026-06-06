@@ -68,13 +68,11 @@ export async function GET(
 
     const response = NextResponse.json(tour);
 
-    // Add cache control headers to ensure fresh data
+    // Tour details are relatively stable; allow some caching
     response.headers.set(
       "Cache-Control",
-      "no-cache, no-store, must-revalidate"
+      "public, max-age=60, s-maxage=300, stale-while-revalidate=600"
     );
-    response.headers.set("Pragma", "no-cache");
-    response.headers.set("Expires", "0");
 
     return response;
   } catch (error) {
