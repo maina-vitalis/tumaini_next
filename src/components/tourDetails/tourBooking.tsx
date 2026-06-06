@@ -35,10 +35,7 @@ const BookingSchema = z.object({
   phoneNumber: z
     .string()
     .regex(/^\+?\d{10,15}$/, "Must be a valid phone number"),
-  guest: z.coerce.number({
-    required_error: "required",
-    invalid_type_error: "Must be a valid number",
-  }),
+  guest: z.number({ error: "Must be a valid number" }),
   tourName: z.string().optional(),
 });
 
@@ -83,7 +80,7 @@ function TourBooking({ tourName }: TourName) {
     },
   });
 
-  const onSubmit: SubmitHandler<BookingTypes> = async (data: BookingTypes) => {
+  const onSubmit = async (data: BookingTypes) => {
     mutation.mutate({ ...data, tourName: tourName });
   };
 
@@ -152,7 +149,12 @@ function TourBooking({ tourName }: TourName) {
                   <FormItem>
                     <FormLabel>Persons Attending</FormLabel>
                     <FormControl>
-                      <Input {...field} type="number" min={1} />
+                      <Input
+                        {...field}
+                        type="number"
+                        min={1}
+                        onChange={(e) => field.onChange(Number(e.target.value))}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

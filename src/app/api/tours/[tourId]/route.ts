@@ -1,6 +1,6 @@
 import { getAdminFromRequest } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(
@@ -35,7 +35,7 @@ export async function DELETE(
       revalidatePath("/tours");
       revalidatePath(`/tour-details/${tourId}`);
       revalidatePath("/"); // For hero section
-      revalidateTag("tours"); // Revalidate any tagged tour data
+      // revalidateTag removed for Next 16 compatibility (use revalidatePath or updateTag)
     } catch (revalidateError) {
       console.error("Revalidation error:", revalidateError);
       // Don't fail the request if revalidation fails
@@ -154,7 +154,7 @@ export async function PUT(
       revalidatePath("/tours");
       revalidatePath(`/tour-details/${tourId}`);
       revalidatePath("/"); // For hero section
-      revalidateTag("tours"); // Revalidate any tagged tour data
+      // revalidateTag removed for Next 16 compatibility (use revalidatePath or updateTag)
     } catch (revalidateError) {
       console.error("Revalidation error:", revalidateError);
       // Don't fail the request if revalidation fails

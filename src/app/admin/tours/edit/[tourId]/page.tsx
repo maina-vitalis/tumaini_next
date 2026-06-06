@@ -75,7 +75,7 @@ const tourSchema = z.object({
     "Expert",
   ]),
   hikeType: z.enum(["Day Hike", "Multi-day", "Summit", "Trail", "Adventure"]),
-  date: z.date({ required_error: "Tour date is required" }),
+  date: z.date({ error: "Tour date is required" }),
   summary: z
     .string()
     .min(10, "Summary must be at least 10 characters")

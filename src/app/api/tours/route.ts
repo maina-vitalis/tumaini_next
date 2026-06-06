@@ -1,6 +1,6 @@
 import { getAdminFromRequest } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -105,7 +105,6 @@ export async function POST(req: NextRequest) {
     try {
       revalidatePath("/tours");
       revalidatePath("/"); // For hero section
-      revalidateTag("tours"); // Revalidate any tagged tour data
     } catch (revalidateError) {
       console.error("Revalidation error:", revalidateError);
       // Don't fail the request if revalidation fails
