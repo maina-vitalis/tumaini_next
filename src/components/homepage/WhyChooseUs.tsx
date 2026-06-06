@@ -82,7 +82,7 @@ function WhyChooseUs() {
           </div>
 
           {/* Additional Info */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-greenPrimary/5 to-deepBlue/5 border border-greenPrimary/10">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-greenPrimary/5 to-greenPrimary/5 border border-greenPrimary/10">
             <div className="flex items-center space-x-3 mb-3">
               <div className="w-8 h-8 rounded-full bg-greenPrimary flex items-center justify-center">
                 <span className="text-white text-sm font-bold">✓</span>
@@ -141,7 +141,7 @@ function WhyChooseUs() {
           </div>
 
           {/* Decorative Elements */}
-          <div className="absolute -top-4 -right-4 w-24 h-24 bg-deepBlue/10 rounded-full blur-xl"></div>
+          <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
           <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-greenPrimary/10 rounded-full blur-xl"></div>
         </div>
       </div>

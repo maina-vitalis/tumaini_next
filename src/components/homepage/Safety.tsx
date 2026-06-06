@@ -88,7 +88,7 @@ const Safety = () => {
         </Accordion>
 
         {/* Additional Safety Info */}
-        <div className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-greenPrimary/5 to-deepBlue/5 border border-greenPrimary/10">
+        <div className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-greenPrimary/5 to-greenPrimary/5 border border-greenPrimary/10">
           <div className="text-center">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-greenPrimary flex items-center justify-center">
               <Shield className="w-8 h-8 text-white" />
@@ -107,7 +107,7 @@ const Safety = () => {
       </div>
 
       {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-32 h-32 bg-deepBlue/5 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 right-0 w-40 h-40 bg-greenPrimary/5 rounded-full blur-3xl -z-10"></div>
     </section>
   );

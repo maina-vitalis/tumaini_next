@@ -94,7 +94,7 @@ export default function Home() {
 
           {/* Community CTA Section */}
           <section className="container mx-auto px-4">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-greenPrimary via-greenPrimary to-deepBlue p-8 text-white shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl bg-greenPrimary p-8 text-white shadow-2xl">
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute -top-4 -right-4 h-32 w-32 rounded-full bg-white/20"></div>

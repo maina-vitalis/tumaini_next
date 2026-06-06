@@ -8,7 +8,6 @@ import {
   CheckCircle,
   Clock,
   FileText,
-  Mail,
   Phone,
   RefreshCw,
   Shield,
@@ -72,10 +71,10 @@ export default function CancellationPolicy() {
       title: "Rebooking Option",
       timeframe: "Alternative to refund",
       description: "Transfer your booking to a future date when possible",
-      color: "bg-blue-500",
-      textColor: "text-blue-700 dark:text-blue-300",
-      bgColor: "bg-blue-50 dark:bg-blue-950/20",
-      borderColor: "border-blue-200 dark:border-blue-800",
+      color: "bg-primary",
+      textColor: "text-primary",
+      bgColor: "bg-primary/5 dark:bg-primary/10",
+      borderColor: "border-primary/20",
       icon: RefreshCw,
       details: [
         "Subject to availability on new dates",
@@ -147,29 +146,19 @@ export default function CancellationPolicy() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <Badge className="bg-white/20 text-white border-white/30 text-lg px-4 py-2">
-                <Shield className="w-5 h-5 mr-2" />
-                Cancellation Policy
-              </Badge>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Clear & Fair
-              <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                Cancellation Terms
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-              We believe in transparency. Understand our policies so you can
-              plan your adventure with complete confidence.
-            </p>
+    <div className="min-h-screen bg-background">
+      {/* Minimal Header */}
+      <div className="border-b">
+        <div className="max-w-7xl mx-auto px-4 py-10 text-center">
+          <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+            <Shield className="h-5 w-5 text-primary" />
           </div>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Cancellation Policy
+          </h1>
+          <p className="mt-2 text-muted-foreground">
+            Clear and fair terms so you can book with confidence.
+          </p>
         </div>
       </div>
 
@@ -301,9 +290,9 @@ export default function CancellationPolicy() {
             </p>
           </div>
 
-          <Card className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 border-green-200 dark:border-green-800">
+          <Card className="border-primary/20">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-green-700 dark:text-green-300">
+              <CardTitle className="flex items-center gap-2 text-primary">
                 <RefreshCw className="w-6 h-6" />
                 How to Transfer Your Reservation
               </CardTitle>
@@ -342,7 +331,7 @@ export default function CancellationPolicy() {
 
               <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                 <h4 className="font-semibold mb-2 flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 text-blue-500" />
+                  <AlertCircle className="w-4 h-4 text-primary" />
                   Transfer Requirements
                 </h4>
                 <ul className="text-sm space-y-1 text-muted-foreground">
@@ -362,40 +351,9 @@ export default function CancellationPolicy() {
           </Card>
         </section>
 
-        {/* Contact Section */}
-        <section>
-          <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0">
-            <CardContent className="p-8 md:p-12 text-center">
-              <div className="flex justify-center mb-6">
-                <div className="p-4 rounded-full bg-white/20">
-                  <Mail className="w-8 h-8" />
-                </div>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Need Help with Your Booking?
-              </h2>
-              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                Our team is here to help you navigate any changes to your
-                adventure plans. Don&apos;t hesitate to reach out with questions
-                or concerns.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Badge className="bg-white/20 text-white border-white/30 text-base px-6 py-3">
-                  <Phone className="w-4 h-4 mr-2" />
-                  +254 703 371 240
-                </Badge>
-                <Badge className="bg-white/20 text-white border-white/30 text-base px-6 py-3">
-                  <Mail className="w-4 h-4 mr-2" />
-                  info@tumainifitness.co.ke
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
         {/* Final CTA */}
         <section className="text-center">
-          <Card className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 border-green-200 dark:border-green-800">
+          <Card className="border-primary/20">
             <CardContent className="p-8">
               <Calendar className="w-12 h-12 mx-auto mb-4 text-primary" />
               <h3 className="text-xl font-bold mb-2">
@@ -406,15 +364,15 @@ export default function CancellationPolicy() {
                 confidence knowing exactly what to expect.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Badge className="bg-primary text-primary-foreground text-sm px-4 py-2">
+                <Badge variant="secondary" className="text-sm px-4 py-2">
                   <Shield className="w-4 h-4 mr-2" />
                   Fair & Transparent
                 </Badge>
-                <Badge className="bg-primary text-primary-foreground text-sm px-4 py-2">
+                <Badge variant="secondary" className="text-sm px-4 py-2">
                   <CheckCircle className="w-4 h-4 mr-2" />
                   Customer Focused
                 </Badge>
-                <Badge className="bg-primary text-primary-foreground text-sm px-4 py-2">
+                <Badge variant="secondary" className="text-sm px-4 py-2">
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Flexible Options
                 </Badge>
