@@ -71,7 +71,7 @@ const MobileNav = () => {
             </SheetClose>
           </div>
           <a
-            href="https://gym.tumainifitness.co.ke"
+            href="https://gym.tumainioasisadventures.co.ke/"
             target="_blank"
             rel="noopener"
             className="font-bold text-sm text-primary underline"

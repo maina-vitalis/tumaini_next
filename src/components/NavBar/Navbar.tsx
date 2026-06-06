@@ -27,7 +27,7 @@ const Navbar = () => {
 
           <Button className="rounded-xl border-[1px] border-transparent bg-greenPrimary hover:border-[1px] hover:border-greenPrimary hover:bg-white hover:text-gray-500 ml-auto">
             <a
-              href="https://gym.tumainifitness.co.ke"
+              href="https://gym.tumainioasisadventures.co.ke/"
               target="_blank"
               rel="noopener"
             >
