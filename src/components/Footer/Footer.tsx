@@ -21,7 +21,7 @@ const Footer = () => {
       </div>
       <div className="h-[50px] w-full items-center bg-card text-sm md:text-base text-center">
         <Link href={"/admin/dashboard"}>©</Link> {new Date().getFullYear()}{" "}
-        Copyrights by Tumaini Fitness Adventures. All Rights Reserved
+        Copyrights by Tumaini Oasis Adventures. All Rights Reserved
       </div>
     </footer>
   );
