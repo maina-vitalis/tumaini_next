@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -19,15 +19,7 @@ const Social = () => {
               <h4 className="text-sm font-bold">+254 703 371 240</h4>
             </div>
           </span>
-          <span className="flex items-center gap-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
-              <Mail className="h-5 w-5 text-greenPrimary" />
-            </div>
-            <div>
-              <p className="text-sm font-normal">Email Address</p>
-              <h4 className="text-sm font-bold">info@tumainifitness.co.ke</h4>
-            </div>
-          </span>
+
           <span className="flex items-center gap-6">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
               <MapPin className="h-5 w-5 text-greenPrimary" />

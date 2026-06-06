@@ -22,11 +22,11 @@ import Link from "next/link";
 // Generate metadata for SEO
 export const metadata: Metadata = generateSEOMetadata({
   title:
-    "About Tumaini Fitness | Professional Hiking Guides & Adventure Tours Kenya",
+    "About Tumaini Oasis Adventures | Professional Hiking Guides & Adventure Tours Kenya",
   description:
-    "Learn about Tumaini Fitness - Kenya's premier hiking tour company. Professional certified guides, 5+ years experience, safety-first approach.",
+    "Learn about Tumaini Oasis Adventures - Kenya's premier hiking tour company. Professional certified guides, 5+ years experience, safety-first approach.",
   keywords: [
-    "about Tumaini Fitness",
+    "about Tumaini Oasis Adventures",
     "hiking company Kenya",
     "professional hiking guides",
     "Kenya adventure tours",
@@ -37,7 +37,12 @@ export const metadata: Metadata = generateSEOMetadata({
 
 export default function AboutPage() {
   // Generate structured data
-  const organizationSchema = generateOrganizationSchema();
+  const organizationSchema = {
+    ...generateOrganizationSchema(),
+    name: "Tumaini Oasis Adventures",
+    description:
+      "Tumaini Oasis Adventures - Kenya's premier hiking tour company offering professional certified guides, expert-led adventures, and unforgettable experiences across Kenya's mountains.",
+  };
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "About Us", url: "/about" },
@@ -110,7 +115,7 @@ export default function AboutPage() {
           <div className="container mx-auto px-4 text-center">
             <Badge variant="secondary" className="mb-6">
               <Mountain className="w-4 h-4 mr-2" />
-              About Tumaini Fitness
+              About Tumaini Oasis Adventures
             </Badge>
 
             <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -119,7 +124,7 @@ export default function AboutPage() {
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8">
-              For over 5 years, Tumaini Fitness has been Kenya&apos;s trusted
+              For over 5 years, Tumaini Oasis Adventures has been Kenya&apos;s trusted
               partner for mountain adventures. We combine professional expertise
               with genuine passion to create unforgettable hiking experiences.
             </p>
@@ -165,7 +170,7 @@ export default function AboutPage() {
 
               <div className="space-y-6 text-lg leading-relaxed text-left">
                 <p>
-                  Tumaini Fitness was founded in 2019 with a simple mission: to
+                  Tumaini Oasis Adventures was founded in 2019 with a simple mission: to
                   make Kenya&apos;s breathtaking mountains accessible to
                   everyone, regardless of their experience level. What started
                   as a small group of passionate hikers has grown into

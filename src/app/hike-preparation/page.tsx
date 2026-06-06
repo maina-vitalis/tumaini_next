@@ -26,7 +26,6 @@ export default function PreparationPage() {
     {
       phase: "5-6 Weeks Before",
       title: "Foundation Building",
-      color: "bg-blue-500",
       activities: [
         "Start with 30-minute walks daily",
         "Basic bodyweight exercises",
@@ -36,7 +35,6 @@ export default function PreparationPage() {
     {
       phase: "3-4 Weeks Before",
       title: "Endurance Building",
-      color: "bg-green-500",
       activities: [
         "45-60 minute hikes with elevation",
         "Strength training 2x per week",
@@ -46,7 +44,6 @@ export default function PreparationPage() {
     {
       phase: "2 Weeks Before",
       title: "Peak Training",
-      color: "bg-orange-500",
       activities: [
         "Long hikes with full gear",
         "Hill repeats and stair climbing",
@@ -56,7 +53,6 @@ export default function PreparationPage() {
     {
       phase: "1 Week Before",
       title: "Tapering",
-      color: "bg-purple-500",
       activities: [
         "Light walks and stretching",
         "Gear testing and packing",
@@ -66,7 +62,6 @@ export default function PreparationPage() {
     {
       phase: "Day Before",
       title: "Rest & Prepare",
-      color: "bg-red-500",
       activities: ["Complete rest day", "Hydrate well", "Early bedtime"],
     },
   ];
@@ -75,7 +70,6 @@ export default function PreparationPage() {
     {
       title: "Physical Training",
       icon: Activity,
-      color: "text-blue-600 bg-blue-100 dark:bg-blue-900/20",
       tips: [
         "Build cardiovascular endurance gradually",
         "Focus on leg and core strength",
@@ -87,7 +81,6 @@ export default function PreparationPage() {
     {
       title: "Nutrition Planning",
       icon: Utensils,
-      color: "text-green-600 bg-green-100 dark:bg-green-900/20",
       tips: [
         "Eat balanced meals leading up to the hike",
         "Test energy foods during training",
@@ -99,7 +92,6 @@ export default function PreparationPage() {
     {
       title: "Mental Preparation",
       icon: Target,
-      color: "text-purple-600 bg-purple-100 dark:bg-purple-900/20",
       tips: [
         "Visualize successful completion",
         "Set realistic expectations",
@@ -111,7 +103,6 @@ export default function PreparationPage() {
     {
       title: "Equipment Check",
       icon: Backpack,
-      color: "text-orange-600 bg-orange-100 dark:bg-orange-900/20",
       tips: [
         "Test all gear before the hike",
         "Break in new hiking boots",
@@ -123,7 +114,6 @@ export default function PreparationPage() {
     {
       title: "Route Planning",
       icon: MapPin,
-      color: "text-red-600 bg-red-100 dark:bg-red-900/20",
       tips: [
         "Study the trail map and elevation profile",
         "Check weather conditions",
@@ -135,7 +125,6 @@ export default function PreparationPage() {
     {
       title: "Health & Safety",
       icon: Shield,
-      color: "text-teal-600 bg-teal-100 dark:bg-teal-900/20",
       tips: [
         "Consult doctor if you have health concerns",
         "Pack a comprehensive first aid kit",
@@ -200,10 +189,10 @@ export default function PreparationPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 text-white">
-        <div className="absolute inset-0 bg-black/20" />
+      <div className="relative overflow-hidden bg-primary text-primary-foreground">
+        <div className="absolute inset-0 bg-black/10" />
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
           <div className="text-center">
             <div className="flex justify-center mb-6">
@@ -214,9 +203,7 @@ export default function PreparationPage() {
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Prepare for Your
-              <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                Epic Adventure
-              </span>
+              <span className="block text-primary-foreground/90">Epic Adventure</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
               Transform your hiking dreams into reality with our comprehensive
@@ -242,23 +229,21 @@ export default function PreparationPage() {
 
           <div className="grid gap-6 md:gap-8">
             {trainingPhases.map((phase, index) => (
-              <Card key={index} className="overflow-hidden">
+              <Card key={index} className="overflow-hidden border-l-4 border-l-primary">
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
-                    <div
-                      className={`${phase.color} text-white p-6 md:w-64 flex-shrink-0`}
-                    >
+                    <div className="bg-primary/10 text-primary p-6 md:w-64 flex-shrink-0">
                       <div className="flex items-center gap-3 mb-2">
                         <Calendar className="w-6 h-6" />
                         <span className="font-semibold">{phase.phase}</span>
                       </div>
-                      <h3 className="text-xl font-bold">{phase.title}</h3>
+                      <h3 className="text-xl font-bold text-foreground">{phase.title}</h3>
                     </div>
                     <div className="p-6 flex-1">
                       <ul className="space-y-3">
                         {phase.activities.map((activity, actIndex) => (
                           <li key={actIndex} className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                             <span>{activity}</span>
                           </li>
                         ))}
@@ -289,11 +274,11 @@ export default function PreparationPage() {
               return (
                 <Card
                   key={index}
-                  className="group hover:shadow-lg transition-all duration-300"
+                  className="group hover:shadow-md transition-all duration-300 border-border/50"
                 >
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
-                      <div className={`p-3 rounded-lg ${category.color}`}>
+                      <div className="p-3 rounded-lg bg-primary/10 text-primary">
                         <IconComponent className="w-6 h-6" />
                       </div>
                       <CardTitle className="text-xl">
@@ -315,7 +300,7 @@ export default function PreparationPage() {
                     </ul>
                     <div className="pt-3 border-t">
                       <div className="flex items-start gap-2">
-                        <Star className="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+                        <Star className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
                         <p className="text-sm font-medium text-primary">
                           Pro Tip: {category.proTip}
                         </p>
@@ -383,9 +368,9 @@ export default function PreparationPage() {
 
         {/* Important Reminders */}
         <section>
-          <Card className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 border-orange-200 dark:border-orange-800">
+          <Card className="border-primary/30">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-orange-700 dark:text-orange-300">
+              <CardTitle className="flex items-center gap-2 text-primary">
                 <AlertTriangle className="w-6 h-6" />
                 Important Reminders
               </CardTitle>
@@ -393,11 +378,11 @@ export default function PreparationPage() {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-red-500" />
+                  <h4 className="font-semibold flex items-center gap-2 text-foreground">
+                    <Heart className="w-4 h-4 text-primary" />
                     Health & Safety
                   </h4>
-                  <ul className="space-y-2 text-sm">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
                     <li>
                       • Consult your doctor if you have any health concerns
                     </li>
@@ -409,11 +394,11 @@ export default function PreparationPage() {
                   </ul>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-semibold flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-yellow-500" />
+                  <h4 className="font-semibold flex items-center gap-2 text-foreground">
+                    <Zap className="w-4 h-4 text-secondary" />
                     Final Preparations
                   </h4>
-                  <ul className="space-y-2 text-sm">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
                     <li>
                       • Check weather forecast and adjust gear accordingly
                     </li>
@@ -440,10 +425,10 @@ export default function PreparationPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
+            <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Sun className="w-5 h-5 text-blue-600" />
+                <CardTitle className="flex items-center gap-2 text-primary">
+                  <Sun className="w-5 h-5" />
                   Night Before
                 </CardTitle>
               </CardHeader>
@@ -458,17 +443,17 @@ export default function PreparationPage() {
                   "Set multiple alarms",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{item}</span>
                   </div>
                 ))}
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/20 dark:to-yellow-950/20">
+            <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-orange-600" />
+                <CardTitle className="flex items-center gap-2 text-secondary">
+                  <Clock className="w-5 h-5" />
                   Morning Of
                 </CardTitle>
               </CardHeader>
@@ -483,7 +468,7 @@ export default function PreparationPage() {
                   "Stay positive and excited!",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{item}</span>
                   </div>
                 ))}
@@ -494,27 +479,27 @@ export default function PreparationPage() {
 
         {/* CTA Section */}
         <section className="text-center">
-          <Card className="bg-gradient-to-r from-green-600 to-blue-600 text-white border-0">
+          <Card className="bg-primary text-primary-foreground border-0">
             <CardContent className="p-12">
               <Mountain className="w-16 h-16 mx-auto mb-6 opacity-80" />
               <h2 className="text-3xl font-bold mb-4">
                 Ready to Conquer Your Next Adventure?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
                 With proper preparation, every mountain becomes conquerable.
                 Your journey to the summit starts with the first step of
                 preparation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Badge className="bg-white/20 text-white border-white/30 text-lg px-6 py-3">
+                <Badge variant="secondary" className="text-lg px-6 py-3">
                   <Compass className="w-5 h-5 mr-2" />
                   Plan Your Route
                 </Badge>
-                <Badge className="bg-white/20 text-white border-white/30 text-lg px-6 py-3">
+                <Badge variant="secondary" className="text-lg px-6 py-3">
                   <Droplets className="w-5 h-5 mr-2" />
                   Stay Hydrated
                 </Badge>
-                <Badge className="bg-white/20 text-white border-white/30 text-lg px-6 py-3">
+                <Badge variant="secondary" className="text-lg px-6 py-3">
                   <Shield className="w-5 h-5 mr-2" />
                   Stay Safe
                 </Badge>

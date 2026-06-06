@@ -4,8 +4,13 @@ import logo from "./../../../public/image/icon.png";
 const Logo = () => {
   return (
     <div>
-      <div className="flex flex-col gap-1 h-[200px] relative">
-        <Image className="h-auto " src={logo} alt="tumaini fitness logo" fill />
+      <div className="relative h-28 w-28 overflow-hidden rounded-full">
+        <Image 
+          src={logo} 
+          alt="tumaini fitness logo" 
+          fill 
+          className="object-cover" 
+        />
       </div>
     </div>
   );
