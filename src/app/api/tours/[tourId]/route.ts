@@ -1,5 +1,6 @@
 import { getAdminFromRequest } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { generateUniqueSlug } from "@/lib/seo";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -33,9 +34,8 @@ export async function DELETE(
     // Revalidate relevant pages to update cached data
     try {
       revalidatePath("/tours");
-      revalidatePath(`/tour-details/${tourId}`);
       revalidatePath("/"); // For hero section
-      // revalidateTag removed for Next 16 compatibility (use revalidatePath or updateTag)
+      // Note: we don't know the slug here easily after delete; list + home is sufficient
     } catch (revalidateError) {
       console.error("Revalidation error:", revalidateError);
       // Don't fail the request if revalidation fails
@@ -100,6 +100,7 @@ export async function PUT(
 
     const {
       tourName,
+      slug: providedSlug,
       price,
       booking,
       images,
@@ -125,10 +126,18 @@ export async function PUT(
       return NextResponse.json({ error: "Tour not found" }, { status: 404 });
     }
 
+    // Determine slug for update
+    let finalSlug = existingTour.slug;
+    if (providedSlug || (tourName && tourName !== existingTour.tourName)) {
+      const base = providedSlug || tourName || existingTour.tourName;
+      finalSlug = await generateUniqueSlug(base, prisma);
+    }
+
     // Update the tour
     const updatedTour = await prisma.tour.update({
       where: { id: tourId },
       data: {
+        slug: finalSlug,
         tourName,
         price: parseFloat(price),
         booking: parseInt(booking),
@@ -147,10 +156,10 @@ export async function PUT(
       },
     });
 
-    // Revalidate relevant pages to update cached data
+    // Revalidate relevant pages to update cached data (use new slug for public detail)
     try {
       revalidatePath("/tours");
-      revalidatePath(`/tour-details/${tourId}`);
+      revalidatePath(`/tour-details/${finalSlug}`);
       revalidatePath("/"); // For hero section
       // revalidateTag removed for Next 16 compatibility (use revalidatePath or updateTag)
     } catch (revalidateError) {

@@ -178,7 +178,7 @@ const HeroImage = () => {
               {/* Dynamic Floating Card */}
               <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
                 {nextTour ? (
-                  <Link href={`/tour-details/${nextTour.id}`} className="block">
+                  <Link href={`/tour-details/${(nextTour as any).slug || nextTour.id}`} className="block">
                     <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
                       {loading ? (
                         <div className="flex items-center justify-between">

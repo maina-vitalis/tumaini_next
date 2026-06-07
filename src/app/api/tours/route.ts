@@ -1,5 +1,6 @@
 import { getAdminFromRequest } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { generateUniqueSlug } from "@/lib/seo";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -62,6 +63,7 @@ export async function POST(req: NextRequest) {
 
     const {
       tourName,
+      slug: providedSlug,
       price,
       booking,
       images,
@@ -97,9 +99,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Generate a unique, SEO-friendly slug
+    const baseForSlug = providedSlug || tourName;
+    const slug = await generateUniqueSlug(baseForSlug, prisma);
+
     // Create new tour
     const newTour = await prisma.tour.create({
       data: {
+        slug,
         tourName,
         price: parseFloat(price),
         booking: parseInt(booking) || 0,
@@ -121,6 +128,7 @@ export async function POST(req: NextRequest) {
     // Revalidate relevant pages to update cached data
     try {
       revalidatePath("/tours");
+      revalidatePath(`/tour-details/${slug}`);
       revalidatePath("/"); // For hero section
     } catch (revalidateError) {
       console.error("Revalidation error:", revalidateError);

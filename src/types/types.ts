@@ -1,9 +1,11 @@
 export interface Tour {
   id: string;
+  slug?: string;
   tourName: string;
   price: number;
   booking: number;
-  imageUrl: string;
+  imageUrl?: string; // legacy
+  images?: string[] | any;
   rating: number;
   difficulty: string;
   level: string;

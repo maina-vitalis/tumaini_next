@@ -43,6 +43,7 @@ import { useEffect, useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { generateSlug } from "@/lib/seo";
 
 // Zod schema for form validation
 const tourSchema = z.object({
@@ -50,6 +51,7 @@ const tourSchema = z.object({
     .string()
     .min(1, "Tour name is required")
     .max(100, "Tour name too long"),
+  slug: z.string().optional(),
   location: z
     .string()
     .min(1, "Location is required")
@@ -141,6 +143,7 @@ export default function EditTour() {
     resolver: zodResolver(tourSchema),
     defaultValues: {
       tourName: "",
+      slug: "",
       location: "",
       price: 0,
       booking: 0,
@@ -204,6 +207,7 @@ export default function EditTour() {
 
         // Populate form with fetched data
         setValue("tourName", data.tourName);
+        setValue("slug", data.slug || "");
         setValue("location", data.location);
         setValue("price", Number(data.price));
         setValue("booking", Number(data.booking));
@@ -524,6 +528,43 @@ export default function EditTour() {
                       {errors.tourName.message}
                     </p>
                   )}
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="slug" className="flex items-center gap-2">
+                      URL Slug (SEO)
+                    </Label>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        const name = watch("tourName");
+                        if (name) {
+                          setValue("slug", generateSlug(name), { shouldDirty: true });
+                        }
+                      }}
+                      className="text-xs h-7 px-2"
+                    >
+                      Generate from name
+                    </Button>
+                  </div>
+                  <Controller
+                    name="slug"
+                    control={control}
+                    render={({ field }) => (
+                      <Input
+                        {...field}
+                        id="slug"
+                        placeholder="auto-generated-from-name"
+                        className={errors.slug ? "border-destructive" : ""}
+                      />
+                    )}
+                  />
+                  <p className="text-[10px] text-muted-foreground">
+                    Used in /tour-details/your-slug . Changing this updates the public URL.
+                  </p>
                 </div>
 
                 <div className="space-y-2">

@@ -17,11 +17,11 @@ function TourCard({ tour }: Props) {
       ? (tour.images as string[])[0]
       : "/placeholder-image.jpg";
 
-  const tourSlug = (tour as any).slug || tour.id;
+  const tourSlug = (tour as Tour & { slug?: string | null }).slug || tour.id;
 
   return (
     <div
-      className="group relative bg-primary/20 rounded-xl overflow-hidden shadow-md hover:shadow-xl 
+      className="group relative bg-primary/20 rounded-xl overflow-hidden shadow-md hover:shadow-xl
                     transition-all duration-300 hover:-translate-y-1"
     >
       {/* Image Section */}
@@ -36,7 +36,7 @@ function TourCard({ tour }: Props) {
           />
           {/* Gradient Overlay */}
           <div
-            className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent 
+            className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent
                           opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           />
 
@@ -63,7 +63,7 @@ function TourCard({ tour }: Props) {
         {/* Title */}
         <Link href={`/tour-details/${tourSlug}`}>
           <h3
-            className="text-lg font-bold text-foreground line-clamp-1 group-hover:text-greenPrimary 
+            className="text-lg font-bold text-foreground line-clamp-1 group-hover:text-greenPrimary
                         transition-colors duration-300 cursor-pointer"
           >
             {tour.tourName}
@@ -100,10 +100,10 @@ function TourCard({ tour }: Props) {
         </div>
 
         {/* CTA Button */}
-        <Link href={`/tour-details/${tour.id}`} className="block">
+        <Link href={`/tour-details/${tourSlug}`} className="block">
           <Button
-            className="w-full bg-greenPrimary hover:bg-greenPrimary/90 text-white py-2 
-                      rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] 
+            className="w-full bg-greenPrimary hover:bg-greenPrimary/90 text-white py-2
+                      rounded-lg font-medium transition-all duration-300 hover:scale-[1.02]
                       shadow-sm hover:shadow-md"
           >
             View Details
@@ -113,7 +113,7 @@ function TourCard({ tour }: Props) {
 
       {/* Hover Effect Border */}
       <div
-        className="absolute inset-0 rounded-xl border-2 border-transparent 
+        className="absolute inset-0 rounded-xl border-2 border-transparent
                       group-hover:border-greenPrimary/20 transition-colors duration-300 pointer-events-none"
       />
     </div>

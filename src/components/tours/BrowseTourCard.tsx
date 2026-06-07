@@ -61,7 +61,7 @@ const BrowseTourCard = ({ tour }: Props) => {
     }
   };
 
-  const tourSlug = (tour as any).slug || tour.id;
+  const tourSlug = (tour as Tour & { slug?: string | null }).slug || tour.id;
 
   return (
     <Card className="group overflow-hidden transition-all duration-300 border-0 shadow-sm hover:shadow-xl border border-transparent hover:border-primary">

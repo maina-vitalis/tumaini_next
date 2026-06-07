@@ -327,7 +327,7 @@ export function generateTourMetadata(tour: {
   price: number;
   images: string[];
   difficulty: string;
-  id: string;
+  id: string; // can be slug or id
 }) {
   const title = `${tour.tourName} - ${tour.location} Hiking Tour`;
   const descBase = (tour.description || "").substring(0, 155).trim();
@@ -346,7 +346,7 @@ export function generateTourMetadata(tour: {
     description,
     keywords,
     image: tour.images?.[0],
-    url: `/tour-details/${tour.id}`,
+    url: `/tour-details/${tour.id}`, // id here is expected to be the slug (or id fallback)
     type: "article",
   });
 }
@@ -359,4 +359,26 @@ export function generateSlug(text: string): string {
     .replace(/\s+/g, "-") // Replace spaces with hyphens
     .replace(/-+/g, "-") // Replace multiple hyphens with single
     .trim();
+}
+
+// Generate a unique slug (checks DB). Pass a prisma client instance.
+export async function generateUniqueSlug(base: string, prismaClient: any): Promise<string> {
+  let candidate = generateSlug(base);
+  if (!candidate) candidate = "tour";
+
+  let slug = candidate;
+  let counter = 1;
+
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const exists = await prismaClient.tour.findUnique({ where: { slug } });
+    if (!exists) {
+      return slug;
+    }
+    slug = `${candidate}-${counter}`;
+    counter += 1;
+    if (counter > 50) {
+      return `${candidate}-${Date.now()}`;
+    }
+  }
 }
