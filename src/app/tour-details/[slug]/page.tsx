@@ -12,18 +12,20 @@ import { notFound } from "next/navigation";
 export const revalidate = 60;
 
 interface Props {
-  params: Promise<{ tourId: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { tourId } = await params;
+  const { slug: param } = await params;
 
   try {
-    const tour = await prisma.tour.findUnique({
-      where: { id: tourId },
+    // Support both slug (preferred for SEO) and id (for backwards compat with old links)
+    let tour = await prisma.tour.findUnique({
+      where: { slug: param },
       select: {
         id: true,
+        slug: true,
         tourName: true,
         price: true,
         booking: true,
@@ -45,8 +47,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
 
     if (!tour) {
+      tour = await prisma.tour.findUnique({
+        where: { id: param },
+        select: {
+          id: true,
+          slug: true,
+          tourName: true,
+          price: true,
+          booking: true,
+          images: true,
+          rating: true,
+          difficulty: true,
+          level: true,
+          hikeType: true,
+          location: true,
+          date: true,
+          description: true,
+          summary: true,
+          itinerary: true,
+          inclusive: true,
+          exclusive: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+    }
+
+    if (!tour) {
       return {
-        title: "Tour Not Found | Tumaini Fitness",
+        title: "Tour Not Found | Tumaini Oasis Adventures",
         description: "The requested tour could not be found.",
         robots: { index: false, follow: false },
       };
@@ -59,6 +88,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : [tour.images as string]
       : [];
 
+    const urlSlug = tour.slug || tour.id;
+
     return generateTourMetadata({
       tourName: tour.tourName,
       description: tour.description || tour.summary || "",
@@ -66,25 +97,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       price: tour.price,
       images,
       difficulty: tour.difficulty,
-      id: tour.id,
+      id: urlSlug, // pass slug (or id fallback) so URL is built correctly
     });
   } catch (error) {
     console.error("Error generating metadata:", error);
     return {
-      title: "Tour Details | Tumaini Fitness",
-      description: "Discover amazing hiking tours with Tumaini Fitness.",
+      title: "Tour Details | Tumaini Oasis Adventures",
+      description: "Discover amazing hiking tours with Tumaini Oasis Adventures.",
     };
   }
 }
 
 export default async function TourDetailsPage({ params }: Props) {
-  const { tourId } = await params;
+  const { slug: param } = await params;
 
   try {
-    const tour = await prisma.tour.findUnique({
-      where: { id: tourId },
+    // Prefer slug lookup for clean SEO URLs, fallback to id for old links
+    let tour = await prisma.tour.findUnique({
+      where: { slug: param },
       select: {
         id: true,
+        slug: true,
         tourName: true,
         price: true,
         booking: true,
@@ -104,6 +137,33 @@ export default async function TourDetailsPage({ params }: Props) {
         updatedAt: true,
       },
     });
+
+    if (!tour) {
+      tour = await prisma.tour.findUnique({
+        where: { id: param },
+        select: {
+          id: true,
+          slug: true,
+          tourName: true,
+          price: true,
+          booking: true,
+          images: true,
+          rating: true,
+          difficulty: true,
+          level: true,
+          hikeType: true,
+          location: true,
+          date: true,
+          description: true,
+          summary: true,
+          itinerary: true,
+          inclusive: true,
+          exclusive: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+    }
 
     if (!tour) {
       notFound();
@@ -119,9 +179,11 @@ export default async function TourDetailsPage({ params }: Props) {
     // Convert date to ISO string safely
     const dateString = new Date(tour.date).toISOString();
 
+    const urlSlug = tour.slug || tour.id;
+
     // Generate structured data
     const tourSchema = generateTourSchema({
-      id: tour.id,
+      id: urlSlug,
       tourName: tour.tourName,
       description: tour.description || tour.summary || "",
       price: tour.price,
@@ -136,7 +198,7 @@ export default async function TourDetailsPage({ params }: Props) {
     const breadcrumbSchema = generateBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Tours", url: "/tours" },
-      { name: tour.tourName, url: `/tour-details/${tour.id}` },
+      { name: tour.tourName, url: `/tour-details/${urlSlug}` },
     ]);
 
     return (

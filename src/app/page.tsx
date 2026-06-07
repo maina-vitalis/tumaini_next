@@ -14,7 +14,7 @@ import { FaWhatsapp } from "react-icons/fa";
 export const metadata: Metadata = generateSEOMetadata({
   title: "Premier Hiking Tours & Adventure Experiences in Kenya",
   description:
-    "Join Tumaini Fitness for expert-led hiking tours across Kenya's most spectacular landscapes. Mt Kenya, Aberdares, and more. Professional guides, safety-first approach, unforgettable experiences for all levels.",
+    "Join Tumaini Oasis Adventures for expert-led hiking tours across Kenya's most spectacular landscapes. Mt Kenya, Aberdares, and more. Professional guides, safety-first approach, unforgettable experiences for all levels.",
   keywords: [
     "hiking tours Kenya",
     "Mt Kenya hiking",

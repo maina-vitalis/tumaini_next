@@ -1,10 +1,28 @@
-"use client";
-
 import ToursClient from "@/components/tours/ToursClient";
-import { generateBreadcrumbSchema } from "@/lib/seo";
+import {
+  generateBreadcrumbSchema,
+  generateMetadata as generateSEOMetadata,
+} from "@/lib/seo";
+import { Metadata } from "next";
 
+export const metadata: Metadata = generateSEOMetadata({
+  title: "All Hiking Tours",
+  description:
+    "Browse our full collection of guided hiking tours in Kenya. Mt Kenya expeditions, Aberdares adventures, day hikes and multi-day treks for every fitness level. Book your next adventure.",
+  keywords: [
+    "hiking tours Kenya",
+    "book hiking tours",
+    "Mt Kenya tours",
+    "Aberdares hiking",
+    "guided hiking Kenya",
+    "all tours",
+    "adventure packages Kenya",
+  ],
+  url: "/tours",
+});
+
+// Breadcrumb + client interactive tours listing
 export default function ToursPage() {
-  // Generate breadcrumb structured data
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Tours", url: "/tours" },
@@ -12,7 +30,6 @@ export default function ToursPage() {
 
   return (
     <>
-      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -35,7 +52,6 @@ export default function ToursPage() {
         </ol>
       </nav>
 
-      {/* Client Component for Interactive Features */}
       <ToursClient />
     </>
   );

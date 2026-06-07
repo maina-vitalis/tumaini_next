@@ -21,7 +21,7 @@ const MobileNav = () => {
         side={"top"}
       >
         <SheetTitle className="text-base font-bold text-greenPrimary">
-          Tumaini Fitness Centre
+          Tumaini Oasis Adventures
         </SheetTitle>
         <Separator />
         <div

@@ -61,9 +61,11 @@ const BrowseTourCard = ({ tour }: Props) => {
     }
   };
 
+  const tourSlug = (tour as any).slug || tour.id;
+
   return (
     <Card className="group overflow-hidden transition-all duration-300 border-0 shadow-sm hover:shadow-xl border border-transparent hover:border-primary">
-      <Link href={`/tour-details/${tour.id}`} className="block">
+      <Link href={`/tour-details/${tourSlug}`} className="block">
         <div className="grid md:grid-cols-[300px_1fr] gap-0">
           {/* Image Section */}
           <div className="relative h-64 md:h-auto overflow-hidden">

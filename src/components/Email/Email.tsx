@@ -73,7 +73,7 @@ export const BookingConfirmationEmail = ({
         </Section>
         {/* Call-to-Action */}
         <Section style={btnContainer}>
-          <Button style={button} href="https://tumainifitness.co.ke">
+          <Button style={button} href="https://tumainioasisadventures.co.ke">
             Back to the site
           </Button>
         </Section>
@@ -86,7 +86,7 @@ export const BookingConfirmationEmail = ({
         <Text style={footer}>
           Best regards,
           <br />
-          The tumainifitness ICT Team
+          The Tumaini Oasis Adventures Team
         </Text>
       </Container>
     </Body>

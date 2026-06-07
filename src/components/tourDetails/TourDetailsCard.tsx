@@ -588,7 +588,7 @@ const TourDetailsCard = ({ tour }: Props) => {
                       <AvatarFallback>TF</AvatarFallback>
                     </Avatar>
                     <div>
-                      <div className="font-semibold">Tumaini Fitness Team</div>
+                      <div className="font-semibold">Tumaini Oasis Adventures Team</div>
                       <div className="text-sm text-muted-foreground">
                         Certified Mountain Guide
                       </div>

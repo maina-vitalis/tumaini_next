@@ -2,6 +2,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
+  generateBreadcrumbSchema,
+  generateMetadata as generateSEOMetadata,
+} from "@/lib/seo";
+import {
   AlertCircle,
   ArrowRight,
   Calendar,
@@ -14,8 +18,28 @@ import {
   Users,
   XCircle,
 } from "lucide-react";
+import { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Cancellation Policy",
+  description:
+    "Clear and fair cancellation policy for Tumaini Oasis Adventures hiking tours in Kenya. Full refunds, partial refunds, rebooking options, and our guarantees explained.",
+  keywords: [
+    "cancellation policy",
+    "hiking tour refund Kenya",
+    "Tumaini Oasis Adventures cancel",
+    "book with confidence",
+    "tour reschedule policy",
+  ],
+  url: "/event-cancellation",
+});
 
 export default function CancellationPolicy() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Cancellation Policy", url: "/event-cancellation" },
+  ]);
   const participantCancellations = [
     {
       title: "Full Refund",
@@ -147,6 +171,23 @@ export default function CancellationPolicy() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="mb-2 mt-4 max-w-7xl mx-auto px-4">
+        <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
+          <li>/</li>
+          <li className="text-foreground font-medium" aria-current="page">Cancellation Policy</li>
+        </ol>
+      </nav>
+
       {/* Minimal Header */}
       <div className="border-b">
         <div className="max-w-7xl mx-auto px-4 py-10 text-center">

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { generateBreadcrumbSchema, generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import {
   Activity,
   AlertTriangle,
@@ -17,8 +18,29 @@ import {
   Utensils,
   Zap,
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Hike Preparation Guide",
+  description:
+    "Complete preparation guide for hiking in Kenya. Training plans, gear checklists, nutrition, safety tips, and day-by-day advice for Mt Kenya, Aberdares and all our adventures.",
+  keywords: [
+    "hiking preparation Kenya",
+    "Mt Kenya training",
+    "what to pack for hiking",
+    "hike training plan",
+    "Kenya mountain hiking gear",
+    "hiking safety tips",
+    "beginner hiking guide",
+  ],
+  url: "/hike-preparation",
+});
 
 export default function PreparationPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Hike Preparation", url: "/hike-preparation" },
+  ]);
   const trainingPhases = [
     {
       phase: "5-6 Weeks Before",
@@ -187,6 +209,23 @@ export default function PreparationPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="mb-2 mt-4 max-w-7xl mx-auto px-4">
+        <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <li><a href="/" className="hover:text-primary">Home</a></li>
+          <li>/</li>
+          <li className="text-foreground font-medium" aria-current="page">Hike Preparation</li>
+        </ol>
+      </nav>
+
       {/* Minimal Header */}
       <div className="border-b">
         <div className="max-w-7xl mx-auto px-4 py-10 text-center">

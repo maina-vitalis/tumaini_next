@@ -17,13 +17,15 @@ function TourCard({ tour }: Props) {
       ? (tour.images as string[])[0]
       : "/placeholder-image.jpg";
 
+  const tourSlug = (tour as any).slug || tour.id;
+
   return (
     <div
       className="group relative bg-primary/20 rounded-xl overflow-hidden shadow-md hover:shadow-xl 
                     transition-all duration-300 hover:-translate-y-1"
     >
       {/* Image Section */}
-      <Link href={`/tour-details/${tour.id}`} className="block relative">
+      <Link href={`/tour-details/${tourSlug}`} className="block relative">
         <AspectRatio ratio={16 / 9} className="relative overflow-hidden">
           <Image
             src={imageUrl}
@@ -59,7 +61,7 @@ function TourCard({ tour }: Props) {
       {/* Content Section */}
       <div className="p-4 space-y-3">
         {/* Title */}
-        <Link href={`/tour-details/${tour.id}`}>
+        <Link href={`/tour-details/${tourSlug}`}>
           <h3
             className="text-lg font-bold text-foreground line-clamp-1 group-hover:text-greenPrimary 
                         transition-colors duration-300 cursor-pointer"

@@ -40,6 +40,7 @@ export type TourSumAggregateOutputType = {
 
 export type TourMinAggregateOutputType = {
   id: string | null
+  slug: string | null
   tourName: string | null
   price: number | null
   booking: number | null
@@ -57,6 +58,7 @@ export type TourMinAggregateOutputType = {
 
 export type TourMaxAggregateOutputType = {
   id: string | null
+  slug: string | null
   tourName: string | null
   price: number | null
   booking: number | null
@@ -74,6 +76,7 @@ export type TourMaxAggregateOutputType = {
 
 export type TourCountAggregateOutputType = {
   id: number
+  slug: number
   tourName: number
   price: number
   booking: number
@@ -109,6 +112,7 @@ export type TourSumAggregateInputType = {
 
 export type TourMinAggregateInputType = {
   id?: true
+  slug?: true
   tourName?: true
   price?: true
   booking?: true
@@ -126,6 +130,7 @@ export type TourMinAggregateInputType = {
 
 export type TourMaxAggregateInputType = {
   id?: true
+  slug?: true
   tourName?: true
   price?: true
   booking?: true
@@ -143,6 +148,7 @@ export type TourMaxAggregateInputType = {
 
 export type TourCountAggregateInputType = {
   id?: true
+  slug?: true
   tourName?: true
   price?: true
   booking?: true
@@ -251,6 +257,7 @@ export type TourGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type TourGroupByOutputType = {
   id: string
+  slug: string | null
   tourName: string
   price: number
   booking: number
@@ -295,6 +302,7 @@ export type TourWhereInput = {
   OR?: Prisma.TourWhereInput[]
   NOT?: Prisma.TourWhereInput | Prisma.TourWhereInput[]
   id?: Prisma.StringFilter<"Tour"> | string
+  slug?: Prisma.StringNullableFilter<"Tour"> | string | null
   tourName?: Prisma.StringFilter<"Tour"> | string
   price?: Prisma.FloatFilter<"Tour"> | number
   booking?: Prisma.FloatFilter<"Tour"> | number
@@ -316,6 +324,7 @@ export type TourWhereInput = {
 
 export type TourOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  slug?: Prisma.SortOrderInput | Prisma.SortOrder
   tourName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   booking?: Prisma.SortOrder
@@ -337,6 +346,7 @@ export type TourOrderByWithRelationInput = {
 
 export type TourWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  slug?: string
   AND?: Prisma.TourWhereInput | Prisma.TourWhereInput[]
   OR?: Prisma.TourWhereInput[]
   NOT?: Prisma.TourWhereInput | Prisma.TourWhereInput[]
@@ -357,10 +367,11 @@ export type TourWhereUniqueInput = Prisma.AtLeast<{
   exclusive?: Prisma.JsonFilter<"Tour">
   createdAt?: Prisma.DateTimeFilter<"Tour"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Tour"> | Date | string
-}, "id">
+}, "id" | "slug">
 
 export type TourOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  slug?: Prisma.SortOrderInput | Prisma.SortOrder
   tourName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   booking?: Prisma.SortOrder
@@ -390,6 +401,7 @@ export type TourScalarWhereWithAggregatesInput = {
   OR?: Prisma.TourScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TourScalarWhereWithAggregatesInput | Prisma.TourScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Tour"> | string
+  slug?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
   tourName?: Prisma.StringWithAggregatesFilter<"Tour"> | string
   price?: Prisma.FloatWithAggregatesFilter<"Tour"> | number
   booking?: Prisma.FloatWithAggregatesFilter<"Tour"> | number
@@ -411,6 +423,7 @@ export type TourScalarWhereWithAggregatesInput = {
 
 export type TourCreateInput = {
   id?: string
+  slug?: string | null
   tourName: string
   price: number
   booking: number
@@ -432,6 +445,7 @@ export type TourCreateInput = {
 
 export type TourUncheckedCreateInput = {
   id?: string
+  slug?: string | null
   tourName: string
   price: number
   booking: number
@@ -453,6 +467,7 @@ export type TourUncheckedCreateInput = {
 
 export type TourUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tourName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   booking?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -474,6 +489,7 @@ export type TourUpdateInput = {
 
 export type TourUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tourName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   booking?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -495,6 +511,7 @@ export type TourUncheckedUpdateInput = {
 
 export type TourCreateManyInput = {
   id?: string
+  slug?: string | null
   tourName: string
   price: number
   booking: number
@@ -516,6 +533,7 @@ export type TourCreateManyInput = {
 
 export type TourUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tourName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   booking?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -537,6 +555,7 @@ export type TourUpdateManyMutationInput = {
 
 export type TourUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tourName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   booking?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -558,6 +577,7 @@ export type TourUncheckedUpdateManyInput = {
 
 export type TourCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   tourName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   booking?: Prisma.SortOrder
@@ -585,6 +605,7 @@ export type TourAvgOrderByAggregateInput = {
 
 export type TourMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   tourName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   booking?: Prisma.SortOrder
@@ -602,6 +623,7 @@ export type TourMaxOrderByAggregateInput = {
 
 export type TourMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   tourName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   booking?: Prisma.SortOrder
@@ -625,6 +647,10 @@ export type TourSumOrderByAggregateInput = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type FloatFieldUpdateOperationsInput = {
@@ -651,6 +677,7 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 export type TourSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  slug?: boolean
   tourName?: boolean
   price?: boolean
   booking?: boolean
@@ -672,6 +699,7 @@ export type TourSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 
 export type TourSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  slug?: boolean
   tourName?: boolean
   price?: boolean
   booking?: boolean
@@ -693,6 +721,7 @@ export type TourSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 
 export type TourSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  slug?: boolean
   tourName?: boolean
   price?: boolean
   booking?: boolean
@@ -714,6 +743,7 @@ export type TourSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 
 export type TourSelectScalar = {
   id?: boolean
+  slug?: boolean
   tourName?: boolean
   price?: boolean
   booking?: boolean
@@ -733,13 +763,14 @@ export type TourSelectScalar = {
   updatedAt?: boolean
 }
 
-export type TourOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tourName" | "price" | "booking" | "images" | "rating" | "difficulty" | "level" | "hikeType" | "location" | "date" | "description" | "summary" | "itinerary" | "inclusive" | "exclusive" | "createdAt" | "updatedAt", ExtArgs["result"]["tour"]>
+export type TourOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "tourName" | "price" | "booking" | "images" | "rating" | "difficulty" | "level" | "hikeType" | "location" | "date" | "description" | "summary" | "itinerary" | "inclusive" | "exclusive" | "createdAt" | "updatedAt", ExtArgs["result"]["tour"]>
 
 export type $TourPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Tour"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    slug: string | null
     tourName: string
     price: number
     booking: number
@@ -1181,6 +1212,7 @@ export interface Prisma__TourClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface TourFieldRefs {
   readonly id: Prisma.FieldRef<"Tour", 'String'>
+  readonly slug: Prisma.FieldRef<"Tour", 'String'>
   readonly tourName: Prisma.FieldRef<"Tour", 'String'>
   readonly price: Prisma.FieldRef<"Tour", 'Float'>
   readonly booking: Prisma.FieldRef<"Tour", 'Float'>

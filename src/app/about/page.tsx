@@ -21,16 +21,17 @@ import Link from "next/link";
 
 // Generate metadata for SEO
 export const metadata: Metadata = generateSEOMetadata({
-  title:
-    "About Tumaini Oasis Adventures | Professional Hiking Guides & Adventure Tours Kenya",
+  title: "About Us | Professional Hiking Guides & Adventure Tours in Kenya",
   description:
-    "Learn about Tumaini Oasis Adventures - Kenya's premier hiking tour company. Professional certified guides, 5+ years experience, safety-first approach.",
+    "Learn about Tumaini Oasis Adventures - Kenya's trusted hiking tour company. Certified professional guides, 5+ years experience, safety-first approach to Mt Kenya, Aberdares and more.",
   keywords: [
     "about Tumaini Oasis Adventures",
+    "Tumaini Oasis Adventures",
     "hiking company Kenya",
     "professional hiking guides",
     "Kenya adventure tours",
     "certified mountain guides",
+    "Nairobi hiking tours",
   ],
   url: "/about",
 });

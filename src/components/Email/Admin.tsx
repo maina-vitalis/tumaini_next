@@ -75,7 +75,7 @@ export const AdminBookingNotificationEmail = ({
         <Text style={footer}>
           Best regards,
           <br />
-          The Tumaini Fitness ICT Team
+          The Tumaini Oasis Adventures Team
         </Text>
       </Container>
     </Body>

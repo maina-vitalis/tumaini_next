@@ -166,7 +166,7 @@ const HeroImage = () => {
                 alt={
                   nextTour
                     ? `${nextTour.tourName} hiking adventure`
-                    : "Mountain hiking adventure with Tumaini Fitness"
+                    : "Mountain hiking adventure with Tumaini Oasis Adventures"
                 }
                 fill
                 priority

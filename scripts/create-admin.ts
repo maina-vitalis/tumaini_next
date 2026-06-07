@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 async function createAdmin() {
   try {
-    const email = "admin@tumainifitness.co.ke";
+    const email = "admin@tumainioasisadventures.co.ke";
     const password = "admin123"; // Change this to a secure password
     const name = "Admin User";
 

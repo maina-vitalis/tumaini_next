@@ -9,6 +9,7 @@ datasource db {
 
 model Tour {
   id          String   @id @default(uuid())
+  slug        String?  @unique
   tourName    String
   price       Float
   booking     Float
@@ -30,6 +31,7 @@ model Tour {
   @@index([date])
   @@index([location])
   @@index([createdAt])
+  @@index([slug])
 }
 
 model Admin {

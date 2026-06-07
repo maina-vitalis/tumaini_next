@@ -17,6 +17,7 @@ export async function GET() {
       },
       select: {
         id: true,
+        slug: true,
         tourName: true,
         price: true,
         images: true,

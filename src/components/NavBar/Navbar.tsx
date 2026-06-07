@@ -14,7 +14,7 @@ const Navbar = () => {
           <div className="m-2 h-[70px] w-[70px] overflow-hidden rounded-full">
             <Image
               src={logo}
-              alt="tumaini fitness logo"
+              alt="Tumaini Oasis Adventures logo"
               width={70}
               height={70}
               className="h-full w-full object-cover"

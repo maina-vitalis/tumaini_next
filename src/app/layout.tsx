@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import {
   generateMetadata,
   generateOrganizationSchema,
+  generateWebSiteSchema,
+  getAbsoluteUrl,
   SEO_CONFIG,
 } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -32,7 +34,35 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = generateMetadata({});
+// Root metadata - enhanced for SEO (Next.js will merge + override per-page)
+export const metadata: Metadata = {
+  ...generateMetadata({}),
+  metadataBase: new URL(SEO_CONFIG.siteUrl),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.webmanifest",
+  alternates: {
+    canonical: SEO_CONFIG.siteUrl,
+  },
+  verification: {
+    // Add these in env or here when you have the codes:
+    // google: "your-google-site-verification",
+    // yandex: "...",
+  },
+};
+
+// Separate viewport export (Next.js best practice)
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+  themeColor: "#16a34a",
+};
 
 export default function RootLayout({
   children,
@@ -40,11 +70,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebSiteSchema();
 
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* Preconnect to external domains */}
+        {/* Preconnect for performance (critical external origins) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -53,40 +84,22 @@ export default function RootLayout({
         />
         <link rel="preconnect" href="https://res.cloudinary.com" />
 
-        {/* DNS prefetch for performance */}
+        {/* DNS prefetch */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://vercel.live" />
 
-        {/* Favicon and app icons */}
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/icon.png" type="image/png" sizes="192x192" />
-
-        {/* Theme color (browser UI) */}
+        {/* Theme color already set via viewport export + meta in some browsers */}
         <meta name="theme-color" content="#16a34a" />
 
-        {/* Viewport and compatibility */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
+        {/* Structured Data - Organization + WebSite (critical for SEO) */}
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
+
+        {/* Additional SEO / compatibility */}
+        <meta name="format-detection" content="telephone=no" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-        {/* Security headers */}
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta
-          httpEquiv="Referrer-Policy"
-          content="strict-origin-when-cross-origin"
-        />
-
-        {/* Structured Data - JSON-LD (for SEO) */}
-        <JsonLd data={organizationSchema} />
-
-        {/* Additional meta tags for better SEO */}
-        <meta name="format-detection" content="telephone=no" />
-
-        {/* Verification tags (add your actual verification codes) */}
-        {/* <meta name="google-site-verification" content="your-google-verification-code" /> */}
-        {/* <meta name="msvalidate.01" content="your-bing-verification-code" /> */}
+        {/* Security / referrer (good defaults) */}
+        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
       </head>
       <body className={cn(inter.className, "antialiased flex min-h-dvh flex-col")}>
         <QueryProvider>

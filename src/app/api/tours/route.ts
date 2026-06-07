@@ -13,6 +13,7 @@ export async function GET(req: NextRequest) {
       },
       select: {
         id: true,
+        slug: true,
         tourName: true,
         price: true,
         booking: true,

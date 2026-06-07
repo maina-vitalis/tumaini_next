@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "info@tumainifitness.co.ke",
+      from: "info@tumainioasisadventures.co.ke",
       to: [email],
       subject: "Tour Booking Confirmation",
       react: BookingConfirmationEmail({
@@ -23,8 +23,8 @@ export async function POST(req: NextRequest) {
     });
 
     await resend.emails.send({
-      from: "TumainiFitnessWebsite<no-reply@tumainifitness.co.ke>",
-      to: ["info@tumainifitness.co.ke"],
+      from: "Tumaini Oasis Adventures<no-reply@tumainioasisadventures.co.ke>",
+      to: ["info@tumainioasisadventures.co.ke"],
       subject: "Tour Booking Confirmation",
       react: AdminBookingNotificationEmail({
         name,

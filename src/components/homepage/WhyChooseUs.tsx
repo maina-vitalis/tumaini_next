@@ -39,7 +39,7 @@ function WhyChooseUs() {
           Your Adventure Partner
         </h2>
         <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-          Choose Tumaini Fitness for your next adventure, where we blend
+          Choose Tumaini Oasis Adventures for your next adventure, where we blend
           expertise and passion to offer unforgettable hiking experiences that
           invigorate your body and enrich your spirit.
         </p>
@@ -104,7 +104,7 @@ function WhyChooseUs() {
           <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
               src={chooseUs}
-              alt="Tumaini Fitness adventure experience"
+              alt="Tumaini Oasis Adventures adventure experience"
               fill
               sizes="(max-width: 1200px) 95vw, 1200px"
               className="object-cover"

@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
+import { SEO_CONFIG } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://tumainifitness.co.ke";
+  const baseUrl = SEO_CONFIG.siteUrl;
 
   return {
     rules: [
@@ -12,35 +12,41 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           "/admin/*",
           "/api/*",
-          "/private/*",
-          "/_next/*",
-          "/static/*",
-          "*.json",
-          "*.xml",
+          // Private/auth routes only
+          "/admin",
+          "/admin/dashboard",
+          "/admin/login",
+          "/admin/tours/*",
         ],
         crawlDelay: 1,
       },
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/admin/*", "/api/*", "/private/*"],
+        disallow: ["/admin/*", "/api/*"],
       },
       {
         userAgent: "Bingbot",
         allow: "/",
-        disallow: ["/admin/*", "/api/*", "/private/*"],
+        disallow: ["/admin/*", "/api/*"],
+        crawlDelay: 1,
+      },
+      // AI crawlers: allow with a small delay so they can discover content for brand visibility
+      // (complete blocks hurt discovery in AI answers / Perplexity / ChatGPT search)
+      {
+        userAgent: "GPTBot",
+        allow: "/",
         crawlDelay: 2,
       },
-      // Block AI crawlers that don't respect content
       {
-        userAgent: [
-          "GPTBot",
-          "ChatGPT-User",
-          "CCBot",
-          "anthropic-ai",
-          "Claude-Web",
-        ],
-        disallow: "/",
+        userAgent: "ChatGPT-User",
+        allow: "/",
+        crawlDelay: 2,
+      },
+      {
+        userAgent: ["CCBot", "anthropic-ai", "Claude-Web"],
+        allow: "/",
+        crawlDelay: 5,
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

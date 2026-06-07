@@ -26,7 +26,7 @@ const Safety = () => {
       icon: <Award className="w-6 h-6 text-white" />,
       title: "Skilled Team",
       content:
-        "Tumaini fitness boasts thousands of hours spent in the great hikes learning, practicing, and iterating the best formulas for safety and growth. Hiking is our business and we mean business.",
+        "Tumaini Oasis Adventures boasts thousands of hours spent in the great hikes learning, practicing, and iterating the best formulas for safety and growth. Hiking is our business and we mean business.",
       value: "team",
     },
   ];

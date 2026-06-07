@@ -7,7 +7,7 @@ const Logo = () => {
       <div className="relative h-28 w-28 overflow-hidden rounded-full">
         <Image 
           src={logo} 
-          alt="tumaini fitness logo" 
+          alt="Tumaini Oasis Adventures logo" 
           fill 
           className="object-cover" 
         />
