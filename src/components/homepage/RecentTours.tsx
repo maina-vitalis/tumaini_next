@@ -34,8 +34,8 @@ const RecentTours = () => {
     console.error("Error fetching recent tours:", error);
     return (
       <section className="relative">
-        <div className="text-center py-16">
-          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gray-100 flex items-center justify-center">
+        <div className="py-16">
+          <div className="w-24 h-24 mb-6 rounded-full bg-gray-100 flex items-center justify-center">
             <span className="text-3xl">⚠️</span>
           </div>
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">
@@ -59,7 +59,7 @@ const RecentTours = () => {
   return (
     <section className="relative">
       {/* Section Header */}
-      <div className="text-center mb-16">
+      <div className="mb-16">
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 text-foreground text-sm font-medium mb-4">
           <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
           Upcoming Adventures
@@ -67,7 +67,7 @@ const RecentTours = () => {
         <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-6">
           Ready for Your Next Hike?
         </h2>
-        <p className="text-medium text-foreground/70 max-w-3xl mx-auto mb-8">
+        <p className="text-medium text-foreground/70 max-w-3xl mb-8">
           Discover our carefully curated hiking experiences designed to
           challenge, inspire, and connect you with Kenya&apos;s most
           breathtaking landscapes.
@@ -77,7 +77,7 @@ const RecentTours = () => {
       {/* Tours Content */}
       <div className="space-y-8">
         {data?.length === 0 && !isLoading ? (
-          <div className="text-center py-16">
+          <div className="py-16">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               No Tours Available
             </h3>
@@ -104,7 +104,7 @@ const RecentTours = () => {
             </div>
 
             {/* View All Button */}
-            <div className="text-center pt-8">
+            <div className="pt-8">
               <Button
                 className="group bg-transparent border-2 border-greenPrimary text-greenPrimary 
                           hover:bg-greenPrimary hover:text-white px-8 py-4 rounded-full 

@@ -103,7 +103,7 @@ export default function Home() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 text-center max-w-3xl mx-auto">
+              <div className="relative z-10 text-left max-w-3xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
                   Join Our Adventure Community
                 </h2>
@@ -131,7 +131,7 @@ export default function Home() {
                   </a>
                 </Button>
 
-                <div className="mt-6 flex items-center justify-center gap-6 text-sm text-white/80">
+                <div className="mt-6 flex items-center justify-start gap-6 text-sm text-white/80">
                   <span className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-white/60 rounded-full"></div>
                     500+ Active Members

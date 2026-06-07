@@ -34,7 +34,7 @@ const Safety = () => {
   return (
     <section className="relative">
       {/* Section Header */}
-      <div className="text-center mb-16">
+      <div className="mb-16">
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
           <Shield className="w-4 h-4 mr-2" />
           Safety First
@@ -42,7 +42,7 @@ const Safety = () => {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
           At the Heart of Our Adventures
         </h2>
-        <p className="text-lg max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg max-w-3xl leading-relaxed">
           Your safety is our top priority. We&apos;ve built comprehensive safety
           measures and protocols to ensure every adventure is both thrilling and
           secure.
@@ -50,7 +50,7 @@ const Safety = () => {
       </div>
 
       {/* Safety Features */}
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl">
         <Accordion type="multiple" className="space-y-4">
           {safetyFeatures.map((feature) => (
             <AccordionItem
@@ -89,14 +89,14 @@ const Safety = () => {
 
         {/* Additional Safety Info */}
         <div className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-greenPrimary/5 to-greenPrimary/5 border border-greenPrimary/10">
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-greenPrimary flex items-center justify-center">
+          <div className="text-left">
+            <div className="w-16 h-16 mb-4 rounded-full bg-greenPrimary flex items-center justify-center">
               <Shield className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-2xl font-bold mb-4 text-primary">
               Comprehensive Safety Protocol
             </h3>
-            <p className="leading-relaxed max-w-2xl mx-auto">
+            <p className="leading-relaxed max-w-2xl">
               Beyond our core safety measures, we conduct thorough risk
               assessments, provide safety briefings, maintain emergency
               communication systems, and carry comprehensive first aid equipment

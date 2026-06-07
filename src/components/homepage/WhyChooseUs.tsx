@@ -30,7 +30,7 @@ function WhyChooseUs() {
   return (
     <div className="relative">
       {/* Section Header */}
-      <div className="text-center mb-16">
+      <div className="mb-16">
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-greenPrimary/10 text-greenPrimary text-sm font-medium mb-4">
           <span className="w-2 h-2 bg-greenPrimary rounded-full mr-2"></span>
           Why Choose Us
@@ -38,7 +38,7 @@ function WhyChooseUs() {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
           Your Adventure Partner
         </h2>
-        <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg text-foreground/70 max-w-3xl leading-relaxed">
           Choose Tumaini Oasis Adventures for your next adventure, where we blend
           expertise and passion to offer unforgettable hiking experiences that
           invigorate your body and enrich your spirit.
@@ -116,7 +116,7 @@ function WhyChooseUs() {
             {/* Stats Overlay */}
             <div className="absolute bottom-6 left-6 right-6">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <div className="grid grid-cols-3 gap-4 text-center text-white">
+                <div className="grid grid-cols-3 gap-4 text-left text-white">
                   <div>
                     <div className="text-2xl font-bold">98%</div>
                     <div className="text-xs uppercase tracking-wide opacity-80">
